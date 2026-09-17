@@ -20,7 +20,7 @@ To dynamically adjust the operational step rate of the emulated neural connectom
 $$ \Delta t_{\text{biological}} = \Delta t_{\text{physical}} \cdot (1.0 + 4.0\Phi)\ $$
 
 ### 3. Active Crystal Field Feedback Compensation
-The framework includes a real-time 4D structural array designed to counter simulated energy level shifting (Δ E) within the solid-state host crystal lattice [2507.01180v1]. The neural network continuously applies a feed-forward phase correction vector to mitigate lineshape broadening.
+The framework includes a real-time 4D structural array designed to counter simulated energy level shifting (Δ E) within the solid-state host crystal lattice. The neural network continuously applies a feed-forward phase correction vector to mitigate lineshape broadening.
 
 ---
 ---
@@ -39,7 +39,7 @@ To transition the software control loops into a physical system, the framework i
 - **Reference Lock:** The VUV comb lines are actively locked via the Pound-Drever-Hall (PDH) technique to an ultra-stable sub-femtosecond optical reference clock, freezing the phase profile before crystal interaction.
 
 ### 3. AI-Driven Feed-Forward Compensation
-Instead of direct modulation of the high-energy laser source, the 4D neuromorphic core outputs real-time phase-correction vectors to a fast **Beta-Barium Borate ($\beta\text{-BBO}$)** Electro-Optic Modulator (EOM) [2507.01180v1]. The system shifts the refractive index in picoseconds, dynamically counteracting local phase drift before the photons hit the $^{229}\text{Th}$ crystal matrix
+Instead of direct modulation of the high-energy laser source, the 4D neuromorphic core outputs real-time phase-correction vectors to a fast **Beta-Barium Borate ($\beta\text{-BBO}$)** Electro-Optic Modulator (EOM). The system shifts the refractive index in picoseconds, dynamically counteracting local phase drift before the photons hit the $^{229}\text{Th}$ crystal matrix
 ## 🛠️ Features
 - **Dynamic 3D Trajectory Rendering:** Real-time visualization of the nuclear state vector path utilizing asynchronous Plotly processing.
 - **Genetic Optimization Engine:** Persistent population tracking (200 individuals per generation) with elite-parent cloning and uniform exploratory mutation operators.
