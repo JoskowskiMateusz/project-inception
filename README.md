@@ -20,7 +20,7 @@ To dynamically adjust the operational step rate of the emulated spiking connecto
 $$ \Delta t_{\text{biological}} = \Delta t_{\text{physical}} \cdot (1.0 + 4.0\Phi) $$
 
 ### 3. Crystalline Thermal Noise Emulation via Ornstein-Uhlenbeck SDE
-Rather than using basic Gaussian models, version 2.9.1 introduces a continuous stochastic differential equation (SDE) solved via the Euler-Maruyama method to realistically emulate thermal phonon interactions inside the crystal lattice [2507.01180v1]:
+Rather than using basic Gaussian models, version 2.9.1 introduces a continuous stochastic differential equation (SDE) solved via the Euler-Maruyama method to realistically emulate thermal phonon interactions inside the crystal lattice:
 
 $$ dx_t = -\theta x_t dt + \sigma dW_t $$
 
@@ -33,7 +33,10 @@ This stochastic framework ensures time-correlated, continuous noise trajectories
 ### 4. Spike-Timing-Dependent Plasticity (STDP) Engine
 To achieve sub-femtosecond phase synchronization, the network adjusts its synaptic weights in real-time based on the strict causal delay (\(\Delta t = t_{\text{post}} - t_{\text{pre}}\)) between incoming quantum feedback and node activation events:
 
-$$ \Delta W(\Delta t) = \begin{cases} A_+ \cdot e^{-\frac{\Delta t}{\tau_+}} & \text{for } \Delta t > 0 \quad (\text{LTP - Potentiation}) \\ -A_- \cdot e^{\frac{\Delta t}{\tau_-}} & \text{for } \Delta t \le 0 \quad (\text{LTD - Depression}) \end{cases}\ $$
+$$ \Delta W(\Delta t) = \begin{cases} 
+A_+ \cdot e^{-\frac{\Delta t}{\tau_+}} & \text{for } \Delta t > 0 \quad \text{ (LTP - Potentiation)} \\ 
+-A_- \cdot e^{\frac{\Delta t}{\tau_-}} & \text{for } \Delta t \le 0 \quad \text{ (LTD - Depression)} 
+\end{cases} $$
 
 This continuous causal adaptation allows the 4D synaptic arrays to accurately predict and counter the crystal-field drift before the laser pulses hit the host matrix.
 
