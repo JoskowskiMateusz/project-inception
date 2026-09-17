@@ -31,7 +31,7 @@ Where:
 
 This stochastic framework ensures time-correlated, continuous noise trajectories, creating a rigorous testing ground for phase-matching validation.
 ### 4. Spike-Timing-Dependent Plasticity (STDP) Engine
-To achieve sub-femtosecond phase synchronization, the network adjusts its synaptic weights in real-time based on the strict causal delay (\(\Delta t = t_{\text{post}} - t_{\text{pre}}\)) between incoming quantum feedback and node activation events:
+To achieve sub-femtosecond phase synchronization, the network adjusts its synaptic weights in real-time based on the strict causal delay based on the strict causal delay $\Delta t = t_{\text{post}} - t_{\text{pre}}$ between incoming quantum feedback between incoming quantum feedback and node activation events:
 
 $$ \Delta W(\Delta t) = \begin{cases} 
 A_+ \cdot e^{-\frac{\Delta t}{\tau_+}} & \text{for } \Delta t > 0 \quad \text{ (LTP - Potentiation)} \\ 
