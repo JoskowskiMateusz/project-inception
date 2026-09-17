@@ -12,12 +12,12 @@ The core software emulates a 3-node Cephalopoda-inspired neural topology executi
 ### 1. Integrated Information Metric (Operational Consciousness Φ)
 The structural coherence of the multi-core matrix is derived from the Frobenius norm of the synaptic weight matrices across N autonomous processing nodes (N = 3):
 
-\[\Phi = \tanh\left(\frac{\Vert{}W_{\text{synaptic}}\Vert{}}{N}\right)\]
+$$ \Phi = \tanh\left(\frac{\Vert{}W_{\text{synaptic}}\Vert{}}{N}\right)\ $$
 
 ### 2. Perceptual Time Dilation Factor
 To dynamically adjust the operational step rate of the emulated neural connectome relative to the physical CPU clock, a linear-hyperbolic time dilation multiplier is introduced:
 
-\[\Delta t_{\text{biological}} = \Delta t_{\text{physical}} \cdot (1.0 + 4.0\Phi)\]
+$$ \Delta t_{\text{biological}} = \Delta t_{\text{physical}} \cdot (1.0 + 4.0\Phi)\ $$
 
 ### 3. Active Crystal Field Feedback Compensation
 The framework includes a real-time 4D structural array designed to counter simulated energy level shifting (Δ E) within the solid-state host crystal lattice [2507.01180v1]. The neural network continuously applies a feed-forward phase correction vector to mitigate lineshape broadening [2507.01180v1].
