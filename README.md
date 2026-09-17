@@ -1,9 +1,9 @@
 # 🌌 Project Inception: Nuclear-Neuromorphic Core Simulator (v2.7)
 
 ## 📌 Overview
-**Project Inception** is an open-source high-level simulation framework designed to model and evaluate decentralized neuromorphic control loops optimized for solid-state nuclear clock transitions [2507.01180v1]. 
+**Project Inception** is an open-source high-level simulation framework designed to model and evaluate decentralized neuromorphic control loops optimized for solid-state nuclear clock transitions. 
 
-The core software emulates a 3-node Cephalopoda-inspired neural topology executing a genetic optimization algorithm to stabilize quantum systems under simulated inhomogeneous crystal-field distortions (Stark Effect) [2507.01180v1]. This framework functions as a room-temperature, low-power (<15W) algorithmic alternative to cryogenic quantum error correction loops.
+The core software emulates a 3-node Cephalopoda-inspired neural topology executing a genetic optimization algorithm to stabilize quantum systems under simulated inhomogeneous crystal-field distortions (Stark Effect) . This framework functions as a room-temperature, low-power (<15W) algorithmic alternative to cryogenic quantum error correction loops.
 
 ---
 
