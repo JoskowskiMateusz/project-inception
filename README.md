@@ -82,5 +82,5 @@ This project is licensed under the **GNU GPL v3 (General Public License)** - see
 - **Lead Architect:** [Mateusz Joskowski]
 
 
-*For technical inquiries, academic collaboration, or commercial licensing proposals, please open an Issue or contact us directly via email.*(
+*For technical inquiries, academic collaboration, or commercial licensing proposals, please open an Issue or contact me directly via email.*(
 mateusz.joskowski@protonmail.com)
