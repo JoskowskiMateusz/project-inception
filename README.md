@@ -23,7 +23,23 @@ $$ \Delta t_{\text{biological}} = \Delta t_{\text{physical}} \cdot (1.0 + 4.0\Ph
 The framework includes a real-time 4D structural array designed to counter simulated energy level shifting (Δ E) within the solid-state host crystal lattice [2507.01180v1]. The neural network continuously applies a feed-forward phase correction vector to mitigate lineshape broadening [2507.01180v1].
 
 ---
+---
 
+## 🧱 Hardware Architecture: VUV Frequency Comb Stabilization Core
+
+To transition the software control loops into a physical system, the framework interfaces with a dual-stage optoelectronic hardware stabilization layer to solve laser phase noise limits [2507.01180v1].
+
+### 1. High-Harmonic Generation (HHG) Source
+- **Pump Laser:** Ytterbium-doped (Yb) fiber laser emitting ultrashort infrared pulses ($\approx 1040\text{ nm}$).
+- **Frequency Multiplication:** Pulses are compressed and focused into a high-finesse Femtosecond Enhancement Cavity filled with an inert gas jet (Argon/Xenon) to drive High-Harmonic Generation. 
+- **Output:** The process isolates the 7th harmonic, producing coherent Vacuum Ultraviolet (**VUV, $\lambda \approx 148.6\text{ nm}$**) light at the targeted $\approx 8.35\text{ eV}$ nuclear isomer transition energy [2507.01180v1].
+
+### 2. Phase-Locking Mechanism
+- **Cavity Design:** Multi-layer fluoride-coated dielectric mirrors inside a vacuum chamber to eliminate oxygen absorption.
+- **Reference Lock:** The VUV comb lines are actively locked via the Pound-Drever-Hall (PDH) technique to an ultra-stable sub-femtosecond optical reference clock, freezing the phase profile before crystal interaction.
+
+### 3. AI-Driven Feed-Forward Compensation
+Instead of direct modulation of the high-energy laser source, the 4D neuromorphic core outputs real-time phase-correction vectors to a fast **Beta-Barium Borate ($\beta\text{-BBO}$)** Electro-Optic Modulator (EOM) [2507.01180v1]. The system shifts the refractive index in picoseconds, dynamically counteracting local phase drift before the photons hit the $^{229}\text{Th}$ crystal matrix
 ## 🛠️ Features
 - **Dynamic 3D Trajectory Rendering:** Real-time visualization of the nuclear state vector path utilizing asynchronous Plotly processing.
 - **Genetic Optimization Engine:** Persistent population tracking (200 individuals per generation) with elite-parent cloning and uniform exploratory mutation operators [2507.01180v1].
