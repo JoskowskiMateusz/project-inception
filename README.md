@@ -32,7 +32,7 @@ To transition the software control loops into a physical system, the framework i
 ### 1. High-Harmonic Generation (HHG) Source
 - **Pump Laser:** Ytterbium-doped (Yb) fiber laser emitting ultrashort infrared pulses ($\approx 1040\text{ nm}$).
 - **Frequency Multiplication:** Pulses are compressed and focused into a high-finesse Femtosecond Enhancement Cavity filled with an inert gas jet (Argon/Xenon) to drive High-Harmonic Generation. 
-- **Output:** The process isolates the 7th harmonic, producing coherent Vacuum Ultraviolet (**VUV, $\lambda \approx 148.6\text{ nm}$**) light at the targeted $\approx 8.35\text{ eV}$ nuclear isomer transition energy [2507.01180v1].
+- **Output:** The process isolates the 7th harmonic, producing coherent Vacuum Ultraviolet (**VUV, $\lambda \approx 148.6\text{ nm}$**) light at the targeted $\approx 8.35\text{ eV}$ nuclear isomer transition energy.
 
 ### 2. Phase-Locking Mechanism
 - **Cavity Design:** Multi-layer fluoride-coated dielectric mirrors inside a vacuum chamber to eliminate oxygen absorption.
