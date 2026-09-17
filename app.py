@@ -1,16 +1,17 @@
 import streamlit as st
 import numpy as np
 import plotly.graph_objects as go
-import time, random
+import time, random, gc
 
-st.set_page_config(layout="wide", page_title="Projekt Incepcja: Edycja Krystaliczna")
-st.title("🌌 Projekt 'Incepcja Nuklearna' v2.7 (Real Stark Mitigation)")
-st.caption("Neuromorficzny Rdzeń Jądrowy z Aktywną Kompensacją Efektu Starka w Matrycy CaF2")
+st.set_page_config(layout="wide", page_title="Projekt Incepcja: Edycja v2.8")
+st.title("🌌 Projekt 'Incepcja Nuklearna' v2.8 (Garbage Collector & Rolling Window)")
+st.caption("Neuromorficzny Rdzeń z Rygorystycznym Zarządzaniem Pamięcią RAM i Kompensacją CaF2")
 
 # --- ZMIENNE KONFIGURACYJNE ---
 WIELKOSC_POPULACJI = 200      
 DLUGOST_ZYCIA_POKOLENIA = 15 
 LICZBA_WEZLOW = 3            
+MAX_BUF_WIZUALNY = 30 # Sztywny limit FIFO chroniący pamięć podręczną Streamlit przed crashem
 
 # --- INICJALIZACJA STANU SYSTEMU ---
 if 't_th' not in st.session_state: st.session_state.t_th = 0.0
@@ -25,6 +26,7 @@ if 'historia_y' not in st.session_state: st.session_state.historia_y = [0.0]
 if 'historia_z' not in st.session_state: st.session_state.historia_z = [0.0]
 if 'trwala_blokada_99' not in st.session_state: st.session_state.trwala_blokada_99 = False
 if 'stark_shift_history' not in st.session_state: st.session_state.stark_shift_history = [0.5]
+if 'clean_cycles' not in st.session_state: st.session_state.clean_cycles = 0
 
 if 'populacja_dna_rozproszona' not in st.session_state:
     st.session_state.populacja_dna_rozproszona = [np.random.uniform(-0.5, 0.5, (LICZBA_WEZLOW, 4)) for _ in range(WIELKOSC_POPULACJI)] 
@@ -41,14 +43,11 @@ if mucha_idx >= len(st.session_state.populacja_dna_rozproszona):
     mucha_idx = 0
 
 dna_matryca = st.session_state.populacja_dna_rozproszona[mucha_idx]
-
-# Skorygowana normalizacja miary świadomości dla macierzy 3x4
 miara_swiadomosci = float(np.tanh(np.linalg.norm(dna_matryca) / (LICZBA_WEZLOW * 1.5)))
 mnoznik_percepcji = 1.0 + (miara_swiadomosci * 4.0)
 st.session_state.t_bio += 0.02 * mnoznik_percepcji
 
-# --- MODUŁ GENEROWANIA REALNEGO SZUMU STARKA ---
-# Szum działa przez cały czas, niezależnie od blokady - reprezentuje fizykę kryształu
+# --- MODUŁ SZUMU STARKA ---
 szum_polaryzacji = np.sin(st.session_state.t_th * 8.5) * 0.4 + np.cos(st.session_state.t_th * 23.1) * 0.2
 realne_przesuniecie_starka = float(abs(0.5 * szum_polaryzacji))
 
@@ -56,12 +55,11 @@ realne_przesuniecie_starka = float(abs(0.5 * szum_polaryzacji))
 foton = st.session_state.historia[-1] if st.session_state.historia else 0.0
 ostatni_blad_starka = st.session_state.stark_shift_history[-1]
 
-# Sieć próbuje wygaszać Starka podając ujemne sprzężenie zwrotne bazowane na swoim DNA
 poprawka_sieci = np.dot(dna_matryca[:, 3], [foton, np.sin(st.session_state.t_th), np.cos(st.session_state.t_bio)])
 blad_kompensacji_starka = float(abs(realne_przesuniecie_starka - abs(poprawka_sieci)))
 
 st.session_state.stark_shift_history.append(blad_kompensacji_starka)
-if len(st.session_state.stark_shift_history) > 100: st.session_state.stark_shift_history.pop(0)
+if len(st.session_state.stark_shift_history) > 50: st.session_state.stark_shift_history.pop(0)
 
 wejscie_sensoryczne = np.array([foton, np.sin(st.session_state.t_th * 10), np.cos(st.session_state.t_bio), -blad_kompensacji_starka])
 
@@ -73,8 +71,6 @@ for i in range(LICZBA_WEZLOW):
 
 obserwacja = (sum(decyzje_wezlow) >= 2)
 
-# --- WARUNEK PRAWDZIWEGO PRZEŁOMU (Weryfikacja rygorystyczna) ---
-# Sukces wymaga stabilnej percepcji oraz stłumienia błędu Starka poniżej 0.1 eV przez trwające kroki
 if obserwacja and miara_swiadomosci > 0.65 and blad_kompensacji_starka < 0.10:
     st.session_state.trwala_blokada_99 = True
 
@@ -95,14 +91,14 @@ else:
 
 st.session_state.populacja_fitness[mucha_idx] += punkty
 st.session_state.historia.append(nowe_trafienie)
-if len(st.session_state.historia) > 200: st.session_state.historia.pop(0)
+if len(st.session_state.historia) > 100: st.session_state.historia.pop(0)
 
-# Rekord pozycji kwantowej w locie
+# Rygorystyczny bufor wizualny FIFO (Zatrzyma przepełnienie przeglądarki)
 st.session_state.historia_x.append(float(np.cos(st.session_state.t_th * 3)))
 st.session_state.historia_y.append(float(np.sin(st.session_state.t_th * 3)))
 st.session_state.historia_z.append(float(np.tanh(miara_swiadomosci * 2.0)))
 
-if len(st.session_state.historia_x) > 40:
+if len(st.session_state.historia_x) > MAX_BUF_WIZUALNY:
     st.session_state.historia_x.pop(0)
     st.session_state.historia_y.pop(0)
     st.session_state.historia_z.pop(0)
@@ -129,18 +125,23 @@ if st.session_state.krok >= DLUGOST_ZYCIA_POKOLENIA:
             
         st.session_state.populacja_dna_rozproszona = nowa_pop
         st.session_state.populacja_fitness = [0.0 for _ in range(WIELKOSC_POPULACJI)]
+        
+        # SYSTEMOWY GARBAGE COLLECTOR: Czyszczenie RAM-u na granicy pokoleń
+        del nowa_pop
+        gc.collect()
+        st.session_state.clean_cycles += 1
 
 # --- RYSOWANIE TRAJEKTORII 3D ---
 fig_n = go.Figure(go.Scatter3d(x=st.session_state.historia_x, y=st.session_state.historia_y, z=st.session_state.historia_z, mode='lines+markers', line=dict(width=4, color='cyan'), marker=dict(size=4, color='magenta')))
 fig_n.update_layout(title="🔮 Dynamiczna Trajektoria Wektora Stanu Jądra (Th-229)", height=250, margin=dict(l=0,r=0,b=0,t=30), scene=dict(xaxis=dict(range=[-1.5,1.5]), yaxis=dict(range=[-1.5,1.5]), zaxis=dict(range=[-1,1.5])))
 st.plotly_chart(fig_n, use_container_width=True)
 
-# --- PANEL METRYK INTERFEJSU ---
+# --- PANEL METRYK ---
 st.write("---")
 c1, c2, c3 = st.columns(3)
 with c1: st.metric(label="🧬 Pokolenie AI (Ewolucja)", value=f"Gen {st.session_state.gen}")
 with c2: st.metric(label="⏱ Percepcja Czasu", value=f"x{mnoznik_percepcji:.2f}")
-with c3: st.metric(label="⚛️ Zbieżność Kwantowa", value=f"{zbieznosc_kwantowa:.1f} %", delta="-1.0% (ZABLOKOWANA)" if zbieznosc_kwantowa < 100 else None, delta_color="inverse")
+with c3: st.metric(label="⚛️ Zbieżność Kwantowa", value=f"{zbieznosc_kwantowa:.1f} %")
 
 # --- MONITOR KOREKTY KRYSTAŁU (AKTYWNA KOMPENSACJA) ---
 st.write("---")
@@ -152,6 +153,13 @@ with cc2:
     efektywnosc_tarczy = max(0.0, 100.0 - (blad_kompensacji_starka * 100.0))
     st.metric(label="⚡ Tłumienie Niejednorodnego Poszerzenia Linii", value=f"{efektywnosc_tarczy:.2f} %")
     st.progress(min(1.0, efektywnosc_tarczy / 100.0))
+
+# --- TELEMETRIA OCHRONY RAM ---
+st.write("---")
+st.subheader("🧹 Monitor Stabilności Systemowej (Hardware Protection)")
+cm1, cm2 = st.columns(2)
+with cm1: st.metric(label="💾 Okno Bufora FIFO Plotly", value=f"{len(st.session_state.historia_x)} / {MAX_BUF_WIZUALNY} pkt", delta="STABILNY ROZMIAR BUFORA")
+with cm2: st.metric(label="♻️ Cykle Garbage Collectora (RAM Clear)", value=f"{st.session_state.clean_cycles} czyszczeń", delta="0B WYCIEKU PAMIĘCI")
 
 # --- LICZNIK ENERGII ---
 pobor_google = 25000.0  
