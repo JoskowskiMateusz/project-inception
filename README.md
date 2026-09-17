@@ -1,4 +1,4 @@
-# 🌌 Project Inception: Nuclear-Neuromorphic Core Simulator (v2.7)
+# 🌌 Project Inception: Nuclear-Neuromorphic Core Simulator (v2.8)
 
 ## 📌 Overview
 **Project Inception** is an open-source high-level simulation framework designed to model and evaluate decentralized neuromorphic control loops optimized for solid-state nuclear clock transitions. 
