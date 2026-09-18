@@ -11,9 +11,10 @@ The framework couples a biological causal learning engine with automated statist
 1. **Stochastic Background Noise:** System deviations are governed by a continuous numerical solution to the **Ornstein-Uhlenbeck Stochastic Differential Equation (SDE)** mixed with non-linear harmonic polarization fields.
 2. **Neuromorphic Decisional Core:** Emulates a decentralized 3-node multi-threaded agent array inspired by open-science distributed connectomes.
 3. **Causal STDP Optimization:** Synaptic updates ($\Delta W$) are computed dynamically based on the strict causal delay $\Delta t = t_{\text{post}} - t_{\text{pre}}$ between incoming feedback states:
-   
-   $$ \Delta W = A_{+} \exp(-\Delta t / \tau_{+}) \quad \text{for } \Delta t > 0 $$
-   $$ \Delta W = -A_{-} \exp(\Delta t / \tau_{-}) \quad \text{for } \Delta t < 0 $$
+
+$$ \Delta W = A_{+} \exp(-\Delta t / \tau_{+}) \quad \text{for } \Delta t > 0 $$
+
+$$ \Delta W = -A_{-} \exp(\Delta t / \tau_{-}) \quad \text{for } \Delta t < 0 $$
 
 4. **Dynamic Time-Step Scaling:** Integrates an abstract matrix normalization index mapping algebraic system coherence directly to time-step integration limits (DT).
 
