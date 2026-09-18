@@ -27,7 +27,7 @@ To bypass the embedded stochastic simulation generator and ensure production-rea
 
 ## 🔋 Infrastructure Green Quantum Metrics
 
-The interface features an interactive comparison dashboard allowing developers to measure abstract infrastructure performance net gains. By locking the conceptual hardware deployment footprint to a baseline of **15.0 W**, the calculator maps accumulated energy conservation values (Wh) in real-time against commercial high-performance cryogenic reference models [2507.01180v1]:
+The interface features an interactive comparison dashboard allowing developers to measure abstract infrastructure performance net gains. By locking the conceptual hardware deployment footprint to a baseline of **15.0 W**, the calculator maps accumulated energy conservation values (Wh) in real-time against commercial high-performance cryogenic reference models:
 
 * **Google Sycamore** (Ref: 25.0 kW)
 * **IBM Osprey** (Ref: 30.0 kW)
