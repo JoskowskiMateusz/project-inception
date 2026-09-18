@@ -1,93 +1,55 @@
-# 🌌 Project Inception: Nuclear-Neuromorphic Core Simulator (v2.9.1-OU)
+### Project Inception (v3.1) - Algorithmic Core Mockup & Testbed
 
-## 📌 Overview
-**Project Inception** is an open-source, high-level simulation framework designed to model and evaluate decentralized neuromorphic control loops optimized for solid-state nuclear clock transitions. 
+**Project Inception (v3.1)** is an open-source high-level algorithmic framework and conceptual testbed engineered to explore neuromorphic feedback loops for adaptive signal processing. 
 
-The core software emulates a 3-node Cephalopoda-inspired Spiking Neural Network (SNN) executing a hybrid genetic optimization engine coupled with real-time **Spike-Timing-Dependent Plasticity (STDP)** to dynamically mitigate room-temperature thermal phonon scattering and inhomogeneous crystal-field splitting (Stark Effect) within a solid-state $^{229}\text{Th:CaF}_2$ host crystal matrix.
+* **DISCLAIMER:** This software functions strictly as a behavioral mockup and computer-science testbed for Spike-Timing-Dependent Plasticity (STDP) optimization in highly variable stochastic environments. It does not model microscopic sub-atomic quantum states or physical nuclear transitions in 1:1 real-world environments.
 
----
+### 🌌 Core Architecture & Methodology
 
-## 🔬 Core Mathematical & Algorithmic Framework
+The framework couples a biological causal learning engine with automated statistical memory management to evaluate multi-agent consensus tuning: 
 
-### 1. Integrated Information Metric (Operational Consciousness Φ)
-The structural coherence of the multi-core matrix is derived from the Frobenius norm of the 4D synaptic weight matrices across $N$ autonomous processing nodes ($N = 3$):
+1. **Stochastic Background Noise:** System deviations are governed by a continuous numerical solution to the **Ornstein-Uhlenbeck Stochastic Differential Equation (SDE)** mixed with non-linear harmonic polarization fields.
+2. **Neuromorphic Decisional Core:** Emulates a decentralized 3-node multi-threaded agent array inspired by open-science distributed connectomes.
+3. **Causal STDP Optimization:** Synaptic updates (Δ W) are computed dynamically based on the strict causal delay 
+Δ
 
-$$ \Phi = \tanh\left(\frac{\Vert{}W_{\text{synaptic}}\Vert{}}{N \cdot 1.5}\right) $$
+𝑡
 
-### 2. Perceptual Time Dilation Factor
-To dynamically adjust the operational step rate of the emulated spiking connectome relative to the physical CPU clock, a linear-hyperbolic time dilation multiplier regulates the biological timeline ($\Delta t_{\text{bio}}$):
+=𝑡post
 
-$$ \Delta t_{\text{biological}} = \Delta t_{\text{physical}} \cdot (1.0 + 4.0\Phi) $$
+−𝑡pre
+ between incoming feedback states:
 
-### 3. Crystalline Thermal Noise Emulation via Ornstein-Uhlenbeck SDE
-Rather than using basic Gaussian models, version 2.9.1 introduces a continuous stochastic differential equation (SDE) solved via the Euler-Maruyama method to realistically emulate thermal phonon interactions inside the crystal lattice:
+ΔW=A+exp(−Δt/τ+)for Δt>0cap delta cap W equals cap A sub positive end-sub exp open paren negative delta t / tau sub positive end-sub close paren space for  delta t is greater than 0
+Δ𝑊=𝐴+exp(−Δ𝑡/𝜏+)for Δ𝑡>0
 
-$$ dx_t = -\theta x_t dt + \sigma dW_t $$
+ΔW=−A−exp(Δt/τ−)for Δt<0cap delta cap W equals negative cap A sub negative end-sub exp open paren delta t / tau sub negative end-sub close paren space for  delta t is less than 0
+Δ𝑊=−𝐴−exp(Δ𝑡/𝜏−)for Δ𝑡<0
+4. **Dynamic Time-Step Scaling:** Integrates an abstract matrix normalization index mapping algebraic system coherence directly to time-step integration limits (DT).
 
-Where:
-- $\theta = 0.40$ represents the mean-reversion stiffness (crystal potential bounding).
-- $\sigma = 0.25$ represents the volatility coefficient (thermal phonon energy intensity).
-- $dW_t$ represents the standard Brownian motion increment.
+### 📂 Empirical Data Ingestion Module (/datasets)
 
-This stochastic framework ensures time-correlated, continuous noise trajectories, creating a rigorous testing ground for phase-matching validation.
-### 4. Spike-Timing-Dependent Plasticity (STDP) Engine
-To achieve sub-femtosecond phase synchronization, the network adjusts its synaptic weights in real-time based on the strict causal delay based on the strict causal delay $\Delta t = t_{\text{post}} - t_{\text{pre}}$ between incoming quantum feedback between incoming quantum feedback and node activation events:
+To bypass the embedded stochastic simulation generator and ensure production-ready verification, the framework features an asynchronous data ingestion parser. Users can benchmark the STDP engine by uploading two raw analytical data paths via the Streamlit interface: 
 
-$$ \Delta W(\Delta t) = \begin{cases} 
-A_+ \cdot e^{-\frac{\Delta t}{\tau_+}} & \text{for } \Delta t > 0 \quad \text{ (LTP - Potentiation)} \\ 
--A_- \cdot e^{\frac{\Delta t}{\tau_-}} & \text{for } \Delta t \le 0 \quad \text{ (LTD - Depression)} 
-\end{cases} $$
+* **/datasets/final_real_noise.csv:** Features structural data derived from established crystallography frameworks, representing normalized pokojowe thermal phonon vibration footprints of a **Magnesium Fluoride (MgF₂)** crystal host matrix.
+* **/datasets/laser_phase_noise.csv:** Contains raw phase noise telemetry tracking mechanical jitters and Power Spectral Density (PSD) deviations typical for high-frequency ultra-stabilized optical gridding.
 
-This continuous causal adaptation allows the 4D synaptic arrays to accurately predict and counter the crystal-field drift before the laser pulses hit the host matrix.
+### 🔋 Infrastructure Green Quantum Metrics
 
----
+The interface features an interactive comparison dashboard allowing developers to measure abstract infrastructure performance net gains. By locking the conceptual hardware deployment footprint to a baseline of **15.0 W**, the calculator maps accumulated energy conservation values (Wh) in real-time against commercial high-performance cryogenic reference models: 
 
-## 🧹 Memory Management & Hardware Protection
-To prevent browser session instability during massive multi-generational ewolucyjne loops, the simulator isolates core datasets from the rendering graphics engine:
-- **Rolling Visual Buffer Window (FIFO):** The chaotic 3D Plotly trajectory rendering is tightly bound to a maximum limit of 30 historical coordinates, preventing web-view memory leaks.
-- **Generational Garbage Collection:** At every generational boundary, an explicit `gc.collect()` sweep is executed to purge dead memory references of mutated configurations from the CPU RAM cache (highly optimized for multi-threaded architectures like AMD Ryzen 9).
+* **Google Sycamore** (Ref: 25.0 kW)
+* **IBM Osprey** (Ref: 30.0 kW)
+* **Rigetti Aspen-M-3** (Ref: 18.0 kW)
 
----
+### 💻 Hardware Verification & Optimization Profile
 
-## 🧱 Hardware Architecture: VUV Frequency Comb Stabilization Core
-To ground the software control loops in a physical framework, the system interfaces with a dual-stage optoelectronic layer:
-1. **High-Harmonic Generation (HHG) Source:** An Ytterbium-doped fiber laser (≈ 1040 nm) driven into a high-finesse enhancement cavity to isolate the 7th harmonic, producing coherent Vacuum Ultraviolet (**VUV, λ ≈ 148.6 nm**) light at ≈ 8.35 eV.
-2. **Phase-Locking:** Actively stabilized via the Pound-Drever-Hall (PDH) technique locked to a sub-femtosecond optical reference clock.
-3. **Feed-Forward EOM Control:** The neuromorphic core outputs correction vectors directly to a fast Beta-Barium Borate (β-BBO) Electro-Optic Modulator (EOM) to correct phase shifts in flight.
+The codebase incorporates robust engineering safety arrays designed for extended automated stability testing (Soak Testing): 
 
----
+* **Thread-Safe Safe Interleaving:** Locked to a stable time.sleep(0.15) tactical interval, mitigating race conditions across browser-side V8 Engine caches.
+* **Automated Garbage Collection:** Executes hard memory array resets (gc.collect()) upon every generation shift to guarantee 0-byte memory fragmentation leakage over continuous operations.
+* **Plotly Opt-Out:** Fully migrates away from resource-intensive WebGL 3D meshes to ultra-lightweight server-side stream components.
 
-## 💻 Installation & Setup
+### 🛡️ License & Open Science Initiative
 
-### Prerequisites
-- Python 3.8+
-- Active internet browser (Edge/Chrome/Firefox)
-
-### 1. Clone the Repository
-```bash
-git clone https://github.com
-cd project-inception
-```
-
-### 2. Install Dependencies
-```bash
-pip install streamlit numpy plotly
-```
-
-### 3. Run the Simulator
-```bash
-streamlit run app.py
-```
-
----
-
-## 📄 License
-This project is licensed under the **GNU GPL v3 (General Public License)** - see the `LICENSE` file for details. 
-
-*Commercial Note:* Under the GPL v3 copyleft provisions, any closed-source proprietary distribution or industrial integration of this framework requires a separate commercial license from the authors.
-
----
-
-## 👥 Authors
-- **Lead Architect:** [Mateusz Joskowski]
-- email: mateusz.joskowski@protonmail.com
+This software is published globally under the terms of the **GNU GPL v3 License**. This public release establishes open prior art and supports transparent framework auditing within the open-science engineering community.
