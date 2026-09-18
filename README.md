@@ -31,6 +31,7 @@ $$ \Delta W = -A_{-} \exp(\Delta t / \tau_{-}) \quad \text{for } \Delta t < 0 $$
 * **Quantum Mössbauer Integration:** Integrates the non-linear **Debye-Waller Factor** ($f_{DW}$) based on the characteristic Debye temperature of the Magnesium Fluoride ($MgF_2$) host matrix ($\Theta_D \approx 410\text{ K}$) and a normalized recoil energy constant ($E_R = 0.05$). The engine evaluates the probability of recoil-free transitions under dynamic thermal dissipation in real-time:
 
 $$ f_{DW} = \exp \left[ \frac{-3 E_R}{\Theta_D} \cdot \left( 1.0 + \frac{4.0 T}{\Theta_D} \right) \right] $$
+
 As the neural core stabilizes the crystal temperature near **338.12 K**, the recoil-free emission probability achieves an elite quantum plateau of **$f_{DW} = 0.998425$**, quantum-dampening the lattice phonon noise.
 * **Zeeman Split Mitigation:** Simulates continuous magnetic field instabilities (Zeeman Effect). Backed by the EMA-stabilized hardware clock, the STDP loop driving the 5D tensor successfully suppresses magnetic deviations down to a stable **0.97 j.z.** baseline with dampening oscillation amplitudes.
 
