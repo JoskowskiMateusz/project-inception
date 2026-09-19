@@ -15,7 +15,7 @@ and this project adheres to Semantic Versioning.
 ### Changed
 - Refactored the core density matrix representation from a flattened 1D array back to a mathematically sound 2x2 matrix topology utilizing `std::complex<double>`.
 - Enforced unconditional Hermitian matrix properties across all time-evolution steps to guarantee positive-definite quantum state probabilities.
-- Re-routed the neural network fitness evaluation function to directly reward the maximization of the true Lindblad Phase Coherence (\(T_2\)).
+- Re-routed the neural network fitness evaluation function to directly reward the maximization of the true Lindblad Phase Coherence ($T_2$).
 - Cleaned the entire codebase of non-ASCII characters to fully resolve compiler encoding mismatches (MSVC `E0135` and `C4566`).
 
 ### Fixed
@@ -24,13 +24,13 @@ and this project adheres to Semantic Versioning.
 ## - 2026-09-18
 
 ### Added
-- Integrated the non-linear **Debye-Waller Factor** (\(f_{DW}\)) based on the characteristic Debye temperature of the Magnesium Fluoride (\(MgF_2\)) host matrix (\(\Theta_D \approx 410\text{ K}\)).
+- Integrated the non-linear **Debye-Waller Factor** ($f_{DW}$) based on the characteristic Debye temperature of the Magnesium Fluoride ($MgF_2$) host matrix ($\Theta_D \approx 410\text{ K}$).
 - Modeled recoil-free emission probabilities (Mössbauer Effect) under dynamic thermal dissipation environments.
-- Embedded an **Exponential Moving Average (EMA) filter** (\(\alpha = 0.04\)) at the hardware clock abstraction layer to neutralize OS timing jitter.
+- Embedded an Exponential Moving Average (EMA) filter ($\alpha = 0.04$) at the hardware clock abstraction layer to neutralize OS timing jitter.
 
 ### Changed
 - Upgraded the system architecture from a passive observer to an active quantum state manipulator by implementing **Active Dynamical Decoupling (DD)** actuator subroutines.
-- Expanded the multi-channel sensory vector space to a 6D tensor layout (3x6 matrix) driving real-time \(\pi\)-pulse inversions via Pauli-X quantum gates.
+- Expanded the multi-channel sensory vector space to a 6D tensor layout (3x6 matrix) driving real-time $\pi$-pulse inversions via Pauli-X quantum gates.
 - Updated telemetry logging mechanisms to output detailed operational saving trends in `raport_hpc.txt`.
 
 ## - 2026-09-18
