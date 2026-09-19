@@ -43,6 +43,10 @@ The framework successfully handles **635,563 precise decoupling operations** wit
 
 By hardware-locking the abstract neuromorphic simulation envelope to **15.0 W**, the calculator maps accumulated infrastructure energy conservation metrics (Wh) against high-performance cryogenic reference environments. Multi-channel quantum core stress testing runs yield a massive net infrastructure energy displacement of over **109+ MWh (109,000+ kWh)** compared to helium-cooled baselines.
 
+## 📜 Release History & Evolution
+
+This framework is under active development, evolving from a standard cloud prototype to an open quantum system simulator. For a detailed, chronological breakdown of architectural overhauls, algorithmic optimizations, and bug fixes across all versions, please refer to the official [CHANGELOG.md](CHANGELOG.md).
+
 ## 🛡️ License & Open Science Initiative
 
 This software is published globally under the terms of the **GNU GPL v3 License**. This public release establishes open prior art and supports transparent framework auditing within the open-science engineering community.
